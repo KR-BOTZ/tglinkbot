@@ -19,7 +19,6 @@ class Var(object):
     OWNER_ID = int(getenv('OWNER_ID', '2062513342'))
     NO_PORT = bool(getenv('NO_PORT', False))
     APP_NAME = None
-    environ["FQDN"] = "filetolink4x.co.in"
     if 'DYNO' in environ:
         ON_HEROKU = True
         APP_NAME = str(getenv('APP_NAME'))

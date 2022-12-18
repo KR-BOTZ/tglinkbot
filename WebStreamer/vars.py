@@ -16,18 +16,17 @@ class Var(object):
     BIN_CHANNEL = int(getenv("BIN_CHANNEL", "-1001584785114"))
     PORT = int(getenv('PORT', 8080))
     BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'filesavejust.osc-fr1.scalingo.io'))
-    OWNER_ID = int(getenv('OWNER_ID', '2062513342'))
+    OWNER_ID = int(getenv('OWNER_ID', '797848243'))
     NO_PORT = bool(getenv('NO_PORT', False))
     APP_NAME = None
-    environ["FQDN"] = "filesavejust.osc-fr1.scalingo.io"
     if 'DYNO' in environ:
         ON_HEROKU = True
-        APP_NAME = str(getenv('APP_NAME')))
+        APP_NAME = str(getenv('APP_NAME'))
     else:
         ON_HEROKU = False
     FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.herokuapp.com'
     URL = "https://{}/".format(FQDN) if ON_HEROKU or NO_PORT else \
-        "https://{}:{}/".format(FQDN, PORT)
+        "http://{}:{}/".format(FQDN, PORT)
     DATABASE_URL = str(getenv('DATABASE_URL', 'mongodb+srv://manju:1234@cluster0.s6qpf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'))
     PING_INTERVAL = int(getenv('PING_INTERVAL', '500'))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', None))

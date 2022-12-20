@@ -93,7 +93,7 @@ async def start(b, m):
                             InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                             ]]
                     ),
-                    parse_mode="HTML",
+                    parse_mode="HTML"
                 )
                 return
             except Exception:
@@ -153,7 +153,7 @@ async def start(b, m):
                 await b.send_message(
                     chat_id=m.chat.id,
                     text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/kr_join).**",
-                    parse_mode="markdown",
+                    parse_mode="markdown", 
                     disable_web_page_preview=True)
                 return
 

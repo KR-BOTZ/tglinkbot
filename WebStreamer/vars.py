@@ -9,7 +9,7 @@ load_dotenv()
 class Var(object):
     API_ID = int(getenv('API_ID', '13384432'))
     API_HASH = str(getenv('API_HASH','ea9db4503ed7088b788e06dfd818e00e'))
-    BOT_TOKEN = str(getenv('BOT_TOKEN'))
+    BOT_TOKEN = str(getenv('BOT_TOKEN', '5516869519:AAH92zxWwuGJhngQEd1fHndl4oIYubFanxQ'))
     SESSION_NAME = str(getenv('SESSION_NAME', 'KRFile2linkBot'))
     SLEEP_THRESHOLD = int(getenv('SLEEP_THRESHOLD', '60'))
     WORKERS = int(getenv('WORKERS', '4'))

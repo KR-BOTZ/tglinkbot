@@ -6,10 +6,68 @@ from WebStreamer.utils.database import Database
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
-from configs import Config 
+
 
 
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
+
+########################## BUTTO TXT ########################## 
+
+START_TEXT = """
+**⍟ Hᴇʟʟᴏ Mʏ Fʀɪᴇɴᴅ {} ⍟ \n \n ⍟ Mʏ Nᴀᴍᴇ Iꜱ [『Fɪʟᴇs 2 Lɪɴᴋ Bᴏᴛ』](https://t.me/KR_File2link_Bot)
+✌︎ I Aᴍ PᴏᴡᴇʀFᴜʟ 🧛‍♂️ Fɪʟᴇs 2 Lɪɴᴋ Bᴏᴛ  
+ 🚀 Sᴇᴇ Mʏ Pᴏᴡᴇʀ ⚡.....!!
+⚜️ Sʜᴀʀᴇ Aɴᴅ Sᴜᴘᴘᴏʀᴛ Us 💖......!!!
+**
+"""
+HELP_TEXT = """
+🎆 𝐇𝐎𝐖 𝐓𝐎 𝐔𝐒𝐄 𝐅𝐈𝐋𝐄𝐒 𝟐 𝐋𝐈𝐍𝐊 𝐁𝐎𝐓
+**🔘 Sᴇɴᴅ Mᴇ Aɴʏ Fɪʟᴇ (Oʀ) Mᴇᴅɪᴀ Fʀᴏᴍ Tᴇʟᴇɢʀᴀᴍ....
+🔘 Tʜɪs Bᴏᴛ Wɪʟʟ Sᴇɴᴅ Yᴏᴜ Pᴇʀᴍᴀɴᴇɴᴛ Lɪɴᴋ
+🔘 Tʜɪs Lɪɴᴋ Cᴀɴ Bᴇ Usᴇᴅ Tᴏ Dᴏᴡɴʟᴏᴀᴅ Oʀ Sᴛʀᴇᴀᴍ Fɪʟᴇs[Usɪɴɢ Exᴛᴇʀɴᴀʟ Vɪᴅᴇᴏ Pʟᴀʏᴇʀ] Tʜʀᴏᴜɢʜ Mʏ Sᴇʀᴠᴇʀ
+🔘 Fᴏʀ Sᴛʀᴇᴀᴍɪɴɢ Jᴜsᴛ Cᴏᴘʏ Tʜᴇ Mᴏɴᴏ Lɪɴᴋ Aɴᴅ Pᴀsᴛᴇ Iᴛ Iɴ Yᴏᴜʀ Vɪᴅᴇᴏ Pʟᴀʏᴇʀ Tᴏ Sᴛᴀʀᴛ Sᴛʀᴇᴀᴍɪɴɢ
+🔘 Tʜɪs Bᴏᴛ Sʜᴀʀᴇs Tʜᴇ Pᴇʀᴍᴀɴᴇɴᴛ Lɪɴᴋ Tᴏ Yᴏᴜ.
+🔘 Tʜɪs Bᴏᴛ Is Aʟsᴏ Sᴜᴘᴘᴏʀᴛᴇᴅ Iɴ Cʜᴀɴɴᴇʟs. Aᴅᴅ Mᴇ Tᴏ Cʜᴀɴɴᴇʟ As Aᴅᴍɪɴ Tᴏ Mᴀᴋᴇ Mᴇ Wᴏʀᴋᴀʙʟᴇ...!
+🔘 Fᴏʀ Mᴏʀᴇ IɴFᴏʀᴍᴀᴛɪᴏɴ : @KR_Join
+
+🔹𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸
+🔞 𝐏𝐨𝐫𝐧 𝐂𝐨𝐧𝐭𝐞𝐧𝐭𝐬 𝐋𝐞𝐚𝐝𝐬 𝐘𝐨𝐮 𝐓𝐨 𝐏𝐞𝐫𝐦𝐚𝐧𝐞𝐧𝐭 𝐁𝐚𝐧 𝐅𝐫𝐨𝐦 𝐀𝐥𝐥 𝐁𝐨𝐭𝐬
+️ 
+⚜️ Bᴏᴛ Aɴʏ Issᴜᴇs Cᴏɴᴛᴀᴄᴛ Mᴇ
+@MrTamil_KiD **
+"""
+
+ABOUT_TEXT = """
+<b>╔══❰ 𝗙𝗜𝗟𝗘𝗦 𝟮 𝗟𝗜𝗡𝗞 𝗕𝗢𝗧 ❱═❍
+║╭━━━━━━━━━━━━━━━➣
+║┣⪼🤖 Mʏ Nᴀᴍᴇ : <a href='https://t.me/KR_File2link_Bot'>『Fɪʟᴇs 2 Lɪɴᴋ Bᴏᴛ』</a>
+║┣⪼👦 Oᴡɴᴇʀ : <a href=https://t.me/MR_tamil_kid>Ꮋ ค ℘ ℘ ꪗ 👻 Ҝiᗪ</a>
+║┣⪼👨‍💻 Dᴇᴠ : <a href=https://t.me/LastDrogz>Lᴀsᴛ 🐲 Dʀᴏɢᴢ</a>
+║┣⪼📢 Uᴘᴅᴀᴛᴇ : <a href=https://t.me/kr_botz>𝗞𝗥 ⚠︎ 𝗕ᴏᴛᴢ</a>
+║┣⪼❣️ Sᴜᴘᴘᴏʀᴛ : <a href=https://t.me/kr_join>𝗞𝗥 👽 𝗝ᴏɪɴ</a>
+║┣⪼📡 Sᴇʀᴠᴇʀ : <a href=https://t.me/MRtamil_kid>𝗩𝗣𝗦</a>
+║┣⪼🗣️ Lᴀɴɢᴜᴀɢᴇ : <a href=https://www.python.org>Pʏᴛʜᴏɴ3</a>
+║┣⪼📚 Lɪʙʀᴀʀʏ : <a href=https://github.com/pyrogram>Pʏʀᴏɢʀᴀᴍ</a>  
+║┣⪼🗒️ Vᴇʀsɪᴏɴ : V 1.0.0 [ Bᴇᴛᴀ ]
+║╰━━━━━━━━━━━━━━━➣
+╚═════❰ @KR_Botz ❱═════❍ </b>
+"""
+DON_TXT = """
+<b>💗 𝐓𝐡𝐚𝐧𝐤𝐬 𝐟𝐨𝐫 𝐬𝐡𝐨𝐰𝐢𝐧𝐠 𝐢𝐧𝐭𝐞𝐫𝐞𝐬𝐭 𝐢𝐧 𝐝𝐨𝐧𝐚𝐭𝐢𝐨𝐧
+Dᴏɴᴀᴛᴇ Us Tᴏ Kᴇᴇᴘ Oᴜʀ Sᴇʀᴠɪᴄᴇs Cᴏɴᴛɪɴᴏᴜsʟʏ Aʟɪᴠᴇ 😢
+Yᴏᴜ Cᴀɴ Sᴇɴᴅ Aɴʏ Aᴍᴏᴜɴᴛ 
+Dᴏɴᴀᴛᴇ Oɴʟʏ Oɴᴇ Rᴜᴘᴇᴇ 🥲
+Of 10₹, 20₹, 30₹, 50₹, 70₹, 100₹, 200₹ 😊
+📨 Pᴀʏᴍᴇɴᴛ Mᴇᴛʜᴏᴅs:
+ 
+GᴏᴏɢʟᴇPᴀʏ / Pᴀʏᴛᴏɴ / PʜᴏɴPᴀʏ / PᴀʏPᴀʟ
+ 
+ Oʀ Dᴏɴᴀᴛᴇ: Mᴇssᴀɢᴇ Mᴇ @MR_Tamil_KiD </b>
+"""
+
+DEV_TXT = "Nothing 🤨"
+
+
 
 ########################## BUTTONS TXT ########################## 
 
@@ -73,27 +131,27 @@ DEV_BUTTONS = InlineKeyboardMarkup(
 async def cb_data(bot, update):
     if update.data == "home":
         await update.message.edit_text(
-            text=Config.START_TEXT.format(update.from_user.mention),
+            text=START_TEXT.format(update.from_user.mention),
             reply_markup=START_BUTTONS
         )
     elif update.data == "help":
         await update.message.edit_text(
-            text=Config.HELP_TEXT,
+            text=HELP_TEXT,
             reply_markup=HELP_BUTTONS
         )
     elif update.data == "about":
         await update.message.edit_text(
-            text=Config.ABOUT_TEXT,
+            text=ABOUT_TEXT,
             reply_markup=ABOUT_BUTTONS
         )
     elif update.data == "dev":
         await update.message.edit_text(
-            text=Config.DEV_TXT,
+            text=DEV_TXT,
             reply_markup=DEV_BUTTONS
         )
     elif update.data == "don":
         await update.message.edit_text(
-            text=Config.DONATE_TXT,
+            text=DONATE_TXT,
             reply_markup=DONATE_BUTTONS
         )
     else:
@@ -157,7 +215,7 @@ async def start(b, m):
                 return
         await m.reply_photo(
             photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
-            caption=Config.START_TEXT.format(m.from_user.first_name, m.from_user.id),
+            caption=START_TEXT.format(m.from_user.first_name, m.from_user.id),
             parse_mode="Markdown",
             reply_markup=InlineKeyboardMarkup(
                 [[
@@ -240,7 +298,7 @@ async def start(b, m):
 async def start(bot, update):
     await update.reply_photo(
         photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
-        caption=Config.ABOUT_TEXT.format(update.from_user.mention),
+        caption=ABOUT_TEXT.format(update.from_user.mention),
         reply_markup=ABOUT_BUTTONS
     )
 

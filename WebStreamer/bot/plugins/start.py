@@ -13,7 +13,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
 ########################## BUTTONS TXT ########################## 
 
-    START_BUTTONS = InlineKeyboardMarkup(
+START_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton('♡︎ Cᴏɴᴛᴀᴄᴛ 🧛‍♂️ Aᴅᴍɪɴ ♡︎', url=f'http://t.me/mr_tamil_kid')
         ],[
@@ -27,7 +27,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
         ]]
     )
 
-    HELP_BUTTONS = InlineKeyboardMarkup(
+HELP_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton("💸 Dᴏɴᴀᴛᴇ", callback_data="don")
         ],[
@@ -36,7 +36,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
         ]]
     )
 
-    ABOUT_BUTTONS = InlineKeyboardMarkup(
+ABOUT_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton(' Dᴏɴᴀᴛᴇ 💸 Mᴇ ', callback_data='don')
         ],[
@@ -48,7 +48,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
         ]]
     )
 
-    DONATE_BUTTONS = InlineKeyboardMarkup(
+DONATE_BUTTONS = InlineKeyboardMarkup(
         [[
         InlineKeyboardButton("Pᴀʏ 💰 Aᴍᴏᴜɴᴛ",
                                              url="https://t.me/mr_tamil_kid")
@@ -58,7 +58,7 @@ db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
         ]]
     ) 
 
-    DEV_BUTTONS = InlineKeyboardMarkup( 
+DEV_BUTTONS = InlineKeyboardMarkup( 
         [[
         InlineKeyboardButton('๑۩ tค๓เl ۞ التاميل ۩๑', url='https://t.me/mr_tamil_kid'),
         ],[

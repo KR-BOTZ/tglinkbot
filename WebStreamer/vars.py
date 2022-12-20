@@ -26,7 +26,7 @@ class Var(object):
         ON_HEROKU = False
     FQDN = str(getenv('FQDN', BIND_ADRESS)) if not ON_HEROKU or getenv('FQDN') else APP_NAME+'.onrender.com'
     URL = "https://{}/".format(FQDN) if ON_HEROKU or NO_PORT else \
-        "http://{}:{}/".format(FQDN, PORT)
+        "https://{}:{}/".format(FQDN, PORT)
     DATABASE_URL = str(getenv('DATABASE_URL','mongodb+srv://SK:SK@cluster0.1b5gk3x.mongodb.net/?retryWrites=true&w=majority'))
     PING_INTERVAL = int(getenv('PING_INTERVAL', '500'))
     UPDATES_CHANNEL = str(getenv('UPDATES_CHANNEL', 'KR_BOTZ'))

@@ -11,6 +11,61 @@ from configs import Config
 
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
+########################## BUTTONS TXT ########################## 
+
+    START_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('♡︎ Cᴏɴᴛᴀᴄᴛ 🧛‍♂️ Aᴅᴍɪɴ ♡︎', url=f'http://t.me/mr_tamil_kid')
+        ],[
+        InlineKeyboardButton('📢 Uᴘᴅᴀᴛᴇ', url='https://t.me/kr_botz'),
+        InlineKeyboardButton('⚡ Sᴜᴘᴘᴏʀᴛ', url='https://t.me/kr_join')
+        ],[
+        InlineKeyboardButton("👨‍💻 Mʏ Fᴀᴛʜᴇʀ", url="https://t.me/mrtamil_kid")
+        ],[
+        InlineKeyboardButton('⚙️ Hᴇʟᴘ', callback_data='help'),
+        InlineKeyboardButton('📚 Aʙᴏᴜᴛ', callback_data='about')
+        ]]
+    )
+
+    HELP_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton("💸 Dᴏɴᴀᴛᴇ", callback_data="don")
+        ],[
+        InlineKeyboardButton("⛺ Hᴏᴍᴇ", callback_data="home"),
+        InlineKeyboardButton("🗑 Cʟᴏsᴇ", callback_data="close")
+        ]]
+    )
+
+    ABOUT_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton(' Dᴏɴᴀᴛᴇ 💸 Mᴇ ', callback_data='don')
+        ],[
+        InlineKeyboardButton("📢 Uᴘᴅᴀᴛᴇ", url= "https://t.me/KR_Botz"),
+        InlineKeyboardButton("👨‍💻 Dᴇᴠs 🥷", callback_data = "dev")
+        ],[
+        InlineKeyboardButton("⛺ Hᴏᴍᴇ", callback_data = "home"),
+        InlineKeyboardButton("🗑 Cʟᴏsᴇ", callback_data = "close")
+        ]]
+    )
+
+    DONATE_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton("Pᴀʏ 💰 Aᴍᴏᴜɴᴛ",
+                                             url="https://t.me/mr_tamil_kid")
+        ],[
+        InlineKeyboardButton("⛺ Hᴏᴍᴇ", callback_data="home"),
+        InlineKeyboardButton("🗑 Cʟᴏsᴇ", callback_data="close")
+        ]]
+    ) 
+
+    DEV_BUTTONS = InlineKeyboardMarkup( 
+        [[
+        InlineKeyboardButton('๑۩ tค๓เl ۞ التاميل ۩๑', url='https://t.me/mr_tamil_kid'),
+        ],[
+        InlineKeyboardButton("≺≺ Bᴀᴄᴋ", callback_data = "about"),
+        InlineKeyboardButton("🗑 Cʟᴏsᴇ", callback_data = "close")
+        ]]
+    ) 
 
 
 
@@ -20,29 +75,29 @@ async def cb_data(bot, update):
         await update.message.edit_text(
             text=Config.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
-            reply_markup=Config.START_BUTTONS
+            reply_markup=START_BUTTONS
         )
     elif update.data == "help":
         await update.message.edit_text(
             text=Config.HELP_TEXT,
             disable_web_page_preview=True,
-            reply_markup=Config.HELP_BUTTONS
+            reply_markup=HELP_BUTTONS
         )
     elif update.data == "about":
         await update.message.edit_text(
             text=Config.ABOUT_TEXT,
             disable_web_page_preview=True,
-            reply_markup=Config.ABOUT_BUTTONS
+            reply_markup=ABOUT_BUTTONS
         )
     elif update.data == "dev":
         await update.message.edit_text(
             text=Config.DEV_TXT,
-            reply_markup=Config.DEV_BUTTONS
+            reply_markup=DEV_BUTTONS
         )
     elif update.data == "don":
         await update.message.edit_text(
             text=Config.DONATE_TXT,
-            reply_markup=Config.DONATE_BUTTONS
+            reply_markup=DONATE_BUTTONS
         )
     else:
         await update.message.delete()
@@ -189,7 +244,7 @@ async def start(bot, update):
     await update.reply_photo(
         photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
         caption=Config.ABOUT_TEXT.format(update.from_user.mention),
-        reply_markup=Config.ABOUT_BUTTONS
+        reply_markup=ABOUT_BUTTONS
     )
 
 

@@ -6,75 +6,43 @@ from WebStreamer.utils.database import Database
 from pyrogram import filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
+from configs import Config 
+
 
 db = Database(Var.DATABASE_URL, Var.SESSION_NAME)
 
-START_TEXT = """
-<i>👋 Hᴇʏ,</i>{}\n
-<i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Sᴛʀᴇᴀᴍɪɴɢ Bᴏᴛ ᴀs ᴡᴇʟʟ Dɪʀᴇᴄᴛ Lɪɴᴋs Gᴇɴᴇʀᴀᴛᴇ</i>\n
-<i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
-<i><u>𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u></i>
-<b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n\n
-<i><b>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</b>@GreyMatter_bots</i>"""
 
-HELP_TEXT = """
-<i>- Sᴇɴᴅ ᴍᴇ ᴀɴʏ ꜰɪʟᴇ (ᴏʀ) ᴍᴇᴅɪᴀ ꜰʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ.</i>
-<i>- I ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴇxᴛᴇʀɴᴀʟ ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ/Stream ʟɪɴᴋ !.</i>
-<i>- Aᴅᴅ Mᴇ ɪɴ ʏᴏᴜʀ Cʜᴀɴɴᴇʟ Fᴏʀ Dɪʀᴇᴄᴛ Dᴏᴡɴʟᴏᴀᴅ Lɪɴᴋs Bᴜᴛᴛᴏɴ</i>
-<i>- Tʜɪs Pᴇʀᴍᴇᴀɴᴛ Lɪɴᴋ Wɪᴛʜ Fᴀsᴛᴇsᴛ Sᴘᴇᴇᴅ</i>\n
-<u>🔸 𝗪𝗔𝗥𝗡𝗜𝗡𝗚 🚸</u>\n
-<b>🔞 Pʀᴏɴ ᴄᴏɴᴛᴇɴᴛꜱ ʟᴇᴀᴅꜱ ᴛᴏ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ ʏᴏᴜ.</b>\n
-<i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/AvishkarPatil'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>"""
 
-ABOUT_TEXT = """
-<b>⚜ Mʏ ɴᴀᴍᴇ : FileStreamX</b>\n
-<b>🔸Vᴇʀꜱɪᴏɴ : <a href='https://telegram.me/GreyMatter_bots'>3.0.1</a></b>\n
-<b>🔹Sᴏᴜʀᴄᴇ : <a href='https://github.com/GreyMatter658/FileStreamBot/tree/main'>Cʟɪᴄᴋ Hᴇʀᴇ</a></b>\n
-<b>🔸GitHub : <a href='https://GitHub.com/avipatilpro'>Fᴏʟʟᴏᴡ</a></b>\n
-<b>🔹Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://telegram.me/AvishkarPatil'>AvishkarPatil</a></b>\n
-<b>🔸Lᴀꜱᴛ ᴜᴘᴅᴀᴛᴇᴅ : <a href='https://telegram.me/GreyMatter_bots'>[ 26-ᴊan-22 ] 03:55 PM</a></b>"""
-
-START_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
-        InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
-        ]]
-    )
-HELP_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
-        InlineKeyboardButton('Aʙᴏᴜᴛ', callback_data='about'),
-        InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
-        ]]
-    )
-ABOUT_BUTTONS = InlineKeyboardMarkup(
-        [[
-        InlineKeyboardButton('Hᴏᴍᴇ', callback_data='home'),
-        InlineKeyboardButton('Hᴇʟᴘ', callback_data='help'),
-        InlineKeyboardButton('Cʟᴏsᴇ', callback_data='close')
-        ]]
-    )
 
 @StreamBot.on_callback_query()
 async def cb_data(bot, update):
     if update.data == "home":
         await update.message.edit_text(
-            text=START_TEXT.format(update.from_user.mention),
+            text=Config.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
-            reply_markup=START_BUTTONS
+            reply_markup=Config.START_BUTTONS
         )
     elif update.data == "help":
         await update.message.edit_text(
-            text=HELP_TEXT,
+            text=Config.HELP_TEXT,
             disable_web_page_preview=True,
-            reply_markup=HELP_BUTTONS
+            reply_markup=Config.HELP_BUTTONS
         )
     elif update.data == "about":
         await update.message.edit_text(
-            text=ABOUT_TEXT,
+            text=Config.ABOUT_TEXT,
             disable_web_page_preview=True,
-            reply_markup=ABOUT_BUTTONS
+            reply_markup=Config.ABOUT_BUTTONS
+        )
+    elif update.data == "dev":
+        await update.message.edit_text(
+            text=Config.DEV_TXT,
+            reply_markup=Config.DEV_BUTTONS
+        )
+    elif update.data == "don":
+        await update.message.edit_text(
+            text=Config.DONATE_TXT,
+            reply_markup=Config.DONATE_BUTTONS
         )
     else:
         await update.message.delete()
@@ -111,7 +79,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="__Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Cᴏɴᴛᴀᴄᴛ ᴛʜᴇ Dᴇᴠᴇʟᴏᴘᴇʀ__\n\n @Moksh_b658 **Tʜᴇʏ Wɪʟʟ Hᴇʟᴘ Yᴏᴜ**",
+                        text=" **Sᴏʀʀʏ Sɪʀ, Yᴏᴜ Aʀᴇ Bᴀɴɴᴇᴅ Tᴏ Usᴇ Mᴇ. Cᴏɴᴛᴀᴄᴛ Mʏ [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗥𝗢𝗨𝗣](https://t.me/kr_join).**",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -125,22 +93,34 @@ async def start(b, m):
                             InlineKeyboardButton("Jᴏɪɴ ɴᴏᴡ 🔓", url=f"https://t.me/{Var.UPDATES_CHANNEL}")
                             ]]
                     ),
-                    parse_mode="HTML"
+                    parse_mode="HTML",
                 )
                 return
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='http://t.me/Moksh_b658'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
+                    text="<i>Sᴏᴍᴇᴛʜɪɴɢ ᴡʀᴏɴɢ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ ᴅᴇᴠᴇʟᴏᴘᴇʀ</i> <b><a href='http://t.me/Kr_Join'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>",
                     parse_mode="HTML",
                     disable_web_page_preview=True)
                 return
-        await m.reply_text(
-            text=START_TEXT.format(m.from_user.mention),
-            parse_mode="HTML",
-            disable_web_page_preview=True,
-            reply_markup=START_BUTTONS
-              )                                                                         
+        await m.reply_photo(
+            photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
+            caption=Config.START_TEXT.format(m.from_user.first_name, m.from_user.id),
+            parse_mode="Markdown",
+            reply_markup=InlineKeyboardMarkup(
+                [[
+                InlineKeyboardButton('♡︎ Cᴏɴᴛᴀᴄᴛ 🧛‍♂️ Aᴅᴍɪɴ ♡︎', url=f'http://t.me/mr_tamil_kid')
+                ],[
+                InlineKeyboardButton('📢 Uᴘᴅᴀᴛᴇ', url='https://t.me/kr_botz'),
+                InlineKeyboardButton('⚡ Sᴜᴘᴘᴏʀᴛ', url='https://t.me/kr_join')
+                ],[
+                InlineKeyboardButton("👨‍💻 Mʏ Fᴀᴛʜᴇʀ", url="https://t.me/mrtamil_kid")
+                ],[
+                InlineKeyboardButton('⚙️ Hᴇʟᴘ', callback_data='help'),
+                InlineKeyboardButton('📚 Aʙᴏᴜᴛ', callback_data='about')
+                ]]
+            )
+        )                                                                         
                                                                                        
                                                                             
     else:
@@ -150,7 +130,7 @@ async def start(b, m):
                 if user.status == "kicked":
                     await b.send_message(
                         chat_id=m.chat.id,
-                        text="**Sᴏʀʀʏ Sɪʀ, Yᴏᴜ ᴀʀᴇ Bᴀɴɴᴇᴅ ᴛᴏ ᴜsᴇ ᴍᴇ. Qᴜɪᴄᴋʟʏ ᴄᴏɴᴛᴀᴄᴛ** @Moksh_b658",
+                        text="**𝘚𝘰𝘳𝘳𝘺 𝘚𝘪𝘳, 𝘠𝘰𝘶 𝘈𝘳𝘦 𝘉𝘢𝘯𝘯𝘦𝘥 𝘛𝘰 𝘜𝘴𝘦 𝘔𝘦. 𝘊𝘰𝘯𝘵𝘢𝘤𝘵 𝘔𝘺 [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/kr_join).**",
                         parse_mode="markdown",
                         disable_web_page_preview=True
                     )
@@ -162,7 +142,7 @@ async def start(b, m):
                     reply_markup=InlineKeyboardMarkup(
                         [[
                           InlineKeyboardButton("🤖 Jᴏɪɴ Uᴘᴅᴀᴛᴇs Cʜᴀɴɴᴇʟ", url=f"https://t.me/{Var.UPDATES_CHANNEL}")],
-                         [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=Moksh_b658_{usr_cmd}")
+                         [InlineKeyboardButton("🔄 Refresh / Try Again", url=f"https://t.me/{(await b.get_me()).username}?start=KRBOTS_{usr_cmd}")
                         
                         ]]
                     ),
@@ -172,7 +152,7 @@ async def start(b, m):
             except Exception:
                 await b.send_message(
                     chat_id=m.chat.id,
-                    text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ** [Moksh Bhardwaj](https://t.me/Moksh_b658).",
+                    text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍʏ [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/kr_join).**",
                     parse_mode="markdown",
                     disable_web_page_preview=True)
                 return
@@ -189,11 +169,11 @@ async def start(b, m):
 
         msg_text ="""
 <i><u>𝗬𝗼𝘂𝗿 𝗟𝗶𝗻𝗸 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲𝗱 !</u></i>\n
-<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <i>{}</i>\n
-<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <i>{}</i>\n
-<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <i>{}</i>\n
+<b>📂 Fɪʟᴇ ɴᴀᴍᴇ :</b> <code>{}</code>\n
+<b>📦 Fɪʟᴇ ꜱɪᴢᴇ :</b> <code>{}</code>\n
+<b>📥 Dᴏᴡɴʟᴏᴀᴅ :</b> <code>{}</code>\n
 <b>🚸 Nᴏᴛᴇ : Lɪɴᴋ ᴇxᴘɪʀᴇᴅ ɪɴ 24 ʜᴏᴜʀꜱ</b>\n
-<i>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</i> <b>@GreyMatter_bots</b>
+<b>🍃 Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ : ©️ @KR_BOTZ</b>
 """
 
         await m.reply_text(
@@ -206,10 +186,10 @@ async def start(b, m):
 
 @StreamBot.on_message(filters.private & filters.command(["about"]))
 async def start(bot, update):
-    await update.reply_text(
-        text=ABOUT_TEXT.format(update.from_user.mention),
-        disable_web_page_preview=True,
-        reply_markup=ABOUT_BUTTONS
+    await update.reply_photo(
+        photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
+        caption=Config.ABOUT_TEXT.format(update.from_user.mention),
+        reply_markup=Config.ABOUT_BUTTONS
     )
 
 
@@ -247,14 +227,14 @@ async def help_handler(bot, message):
         except Exception:
             await bot.send_message(
                 chat_id=message.chat.id,
-                text="__Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ ᴍᴇ__ [Moksh Bhardwaj](https://t.me/Moksh_b658).",
+                text="**Sᴏᴍᴇᴛʜɪɴɢ ᴡᴇɴᴛ Wʀᴏɴɢ. Cᴏɴᴛᴀᴄᴛ Mʏ [𝗦𝘂𝗽𝗽𝗼𝗿𝘁 𝗚𝗿𝗼𝘂𝗽](https://t.me/kr_join).**",
                 parse_mode="markdown",
                 disable_web_page_preview=True)
             return
-    await message.reply_text(
-        text=HELP_TEXT,
+    await message.reply_photo(
+        photo="https://graph.org/file/c72af6f77c6d164b81dd2.jpg",
+        caption=HELP_TEXT,
         parse_mode="HTML",
-        disable_web_page_preview=True,
         reply_markup=HELP_BUTTONS
         )
 

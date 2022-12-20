@@ -15,7 +15,7 @@ class Var(object):
     WORKERS = int(getenv('WORKERS', '4'))
     BIN_CHANNEL = int(getenv('BIN_CHANNEL', '-1001777601172'))
     PORT = int(getenv('PORT', 8080))
-    BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'kr-link.gq'))
+    BIND_ADRESS = str(getenv('WEB_SERVER_BIND_ADDRESS', 'kr-link-gq.onrender.com'))
     OWNER_ID = int(getenv('OWNER_ID', '1504797855'))
     NO_PORT = bool(getenv('NO_PORT', False))
     APP_NAME = None

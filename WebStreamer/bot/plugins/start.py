@@ -151,7 +151,7 @@ async def cb_data(bot, update):
         )
     elif update.data == "don":
         await update.message.edit_text(
-            text=DONATE_TXT,
+            text=DON_TXT,
             reply_markup=DONATE_BUTTONS
         )
     else:

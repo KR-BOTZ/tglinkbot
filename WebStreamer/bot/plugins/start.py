@@ -272,9 +272,7 @@ async def start(b, m):
         file_size = humanbytes(get_media_file_size(get_msg))
 
         stream_link = "https://{}/{}/{}".format(Var.FQDN, get_msg.message_id, file_name) if Var.ON_HEROKU or Var.NO_PORT else \
-            "http://{}:{}/{}/{}".format(Var.FQDN,
-                                     Var.PORT,
-                                     get_msg.message_id,
+            "http://files2link-krbots/{}/{}".format(get_msg.message_id,
                                      file_name)
 
         msg_text ="""

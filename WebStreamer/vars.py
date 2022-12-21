@@ -7,7 +7,7 @@ load_dotenv()
 
 
 class Var(object):
-    DOMAIN = str(getenv('DOMAIN', 'https://watchs-krbotz.onrender.com')) 
+    DOMAIN = str(getenv('DOMAIN', 'watchs-krbotz.onrender.com')) 
     API_ID = int(getenv('API_ID','13384432'))
     API_HASH = str(getenv('API_HASH','ea9db4503ed7088b788e06dfd818e00e'))
     BOT_TOKEN = str(getenv('BOT_TOKEN'))
